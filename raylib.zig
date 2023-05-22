@@ -1,6 +1,48 @@
 // Window related functions
 pub extern fn InitWindow(width: c_int, height: c_int, title: [*:0]const u8) void;
 pub extern fn WindowShouldClose() bool;
+pub extern fn CloseWindow() void;
+pub extern fn IsWindowReady() bool;
+pub extern fn IsWindowFullscreen() bool;
+pub extern fn IsWindowHidden() bool;
+pub extern fn IsWindowMinimized() bool;
+pub extern fn IsWindowMaximized() bool;
+pub extern fn IsWindowFocused() bool;
+pub extern fn IsWindowResized() bool;
+pub extern fn IsWindowState(flag: c_uint) bool;
+pub extern fn SetWindowState(flags: c_uint) void;
+pub extern fn ClearWindowState(flags: c_uint) void;
+pub extern fn ToggleFullscreen() void;
+pub extern fn MaximizeWindow() void;
+pub extern fn MinimizeWindow() void;
+pub extern fn RestoreWindow() void;
+pub extern fn SetWindowIcon(image: Image) void;
+pub extern fn SetWindowIcons(images: [*]Image, count: c_int) void;
+pub extern fn SetWindowTitle(title: [*:0]const u8) void;
+pub extern fn SetWindowPosition(x: c_int, y: c_int) void;
+pub extern fn SetWindowMonitor(monitor: c_int) void;
+pub extern fn SetWindowMinSize(width: c_int, height: c_int) void;
+pub extern fn SetWindowSize(width: c_int, height: c_int) void;
+pub extern fn SetWindoOpacity(opacity: f32) void;
+pub extern fn GetWindowHandle() *anyopaque;
+pub extern fn GetScreenWidth() c_int;
+pub extern fn GetScreenHeight() c_int;
+pub extern fn GetRenderWidth() c_int;
+pub extern fn GetRenderHeight() c_int;
+pub extern fn GetMonitorCount() c_int;
+pub extern fn GetCurrentMonitor() c_int;
+pub extern fn GetMonitorPosition(monitor: c_int) Vector2;
+pub extern fn GetMonitorWidth(monitor: c_int) c_int;
+pub extern fn GetMonitorHeight(monitor: c_int) c_int;
+pub extern fn GetMonitorPhysicalWidth(monitor: c_int) c_int;
+pub extern fn GetMonitorRefreshRate(monitor: c_int) c_int;
+pub extern fn GetWindowPosition() Vector2;
+pub extern fn GetWindowScaleDPI() Vector2;
+pub extern fn GetMonitorName(monitor: c_int) [*:0]const u8;
+pub extern fn SetClipboardText(text: [*:0]const u8) void;
+pub extern fn GetClipboardText() [*:0]const u8;
+pub extern fn EnableEventWaiting() void;
+pub extern fn DisableEventWaiting() void;
 
 // Custom frame control functions
 // NOTE: Those functions are intended for advance users that want full control over the frame processing
@@ -168,6 +210,14 @@ pub const Color = extern struct {
     g: u8,
     b: u8,
     a: u8,
+};
+
+pub const Image = extern struct {
+    data: ?*anyopaque,
+    width: c_int,
+    height: c_int,
+    mipmaps: c_int,
+    format: c_int,
 };
 
 // Custom raylib color palette for amazing visuals on WHITE background
