@@ -375,3 +375,11 @@ pub const KEY_BACK: c_int = 4;
 pub const KEY_MENU: c_int = 82;
 pub const KEY_VOLUME_UP: c_int = 24;
 pub const KEY_VOLUME_DOWN: c_int = 25;
+
+pub const MOUSE_BUTTON_LEFT: c_int = 0;
+pub const MOUSE_BUTTON_RIGHT: c_int = 1;
+pub const MOUSE_BUTTON_MIDDLE: c_int = 2;
+pub const MOUSE_BUTTON_SIDE: c_int = 3;
+pub const MOUSE_BUTTON_EXTRA: c_int = 4;
+pub const MOUSE_BUTTON_FORWARD: c_int = 5;
+pub const MOUSE_BUTTON_BACK: c_int = 6;
