@@ -1,4 +1,5 @@
 const std = @import("std");
+const raylib = @import("raylib/src/build.zig");
 
 const examples = .{
     .core = .{
@@ -9,9 +10,13 @@ const examples = .{
     },
 };
 
+var lib: ?*std.Build.CompileStep = null;
+
 pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
     const target = b.standardTargetOptions(.{});
+
+    lib = raylib.addRaylib(b, target, optimize);
 
     const module = b.addModule("raylib", .{ .source_file = .{ .path = "raylib.zig" } });
 
@@ -43,5 +48,5 @@ pub fn build(b: *std.Build) void {
 
 pub fn link_raylib(exe: *std.build.Step.Compile) void {
     exe.linkLibC();
-    exe.linkSystemLibrary("raylib");
+    exe.linkLibrary(lib.?);
 }
