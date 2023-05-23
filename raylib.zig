@@ -87,6 +87,20 @@ pub extern fn GetCharPressed() c_int;
 // Input-related functions: gamepads
 
 // Input-related functions: mouse
+pub extern fn IsMouseButtonPressed(button: c_int) bool;
+pub extern fn IsMouseButtonDown(button: c_int) bool;
+pub extern fn IsMouseButtonReleased(button: c_int) bool;
+pub extern fn IsMouseButtonUp(button: c_int) bool;
+pub extern fn GetMouseX() c_int;
+pub extern fn GetMouseY() c_int;
+pub extern fn GetMousePosition() Vector2;
+pub extern fn GetMouseDelta() Vector2;
+pub extern fn SetMousePosition(x: c_int, y: c_int) void;
+pub extern fn SetMouseOffset(offsetX: c_int, offsetY: c_int) void;
+pub extern fn SetMouseScale(scaleX: f32, scaleY: f32) void;
+pub extern fn GetMouseWheelMove() f32;
+pub extern fn GetMouseWheelMoveV() Vector2;
+pub extern fn SetMouseCursor(cursor: c_int) void;
 
 // Input-related functions: touch
 
