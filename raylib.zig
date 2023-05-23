@@ -23,7 +23,7 @@ pub extern fn SetWindowPosition(x: c_int, y: c_int) void;
 pub extern fn SetWindowMonitor(monitor: c_int) void;
 pub extern fn SetWindowMinSize(width: c_int, height: c_int) void;
 pub extern fn SetWindowSize(width: c_int, height: c_int) void;
-pub extern fn SetWindoOpacity(opacity: f32) void;
+pub extern fn SetWindowOpacity(opacity: f32) void;
 pub extern fn GetWindowHandle() *anyopaque;
 pub extern fn GetScreenWidth() c_int;
 pub extern fn GetScreenHeight() c_int;
