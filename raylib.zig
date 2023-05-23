@@ -115,6 +115,7 @@ pub extern fn DrawLine(startPosX: c_int, startPosY: c_int, endPosX: c_int, endPo
 pub extern fn DrawLineV(startPos: Vector2, endPos: Vector2, color: Color) void;
 pub extern fn DrawCircleV(center: Vector2, radius: f32, color: Color) void;
 pub extern fn DrawCircleLines(centerX: c_int, centerY: c_int, radius: f32, color: Color) void;
+pub extern fn DrawRectangle(posX: c_int, posY: c_int, width: c_int, height: c_int, color: Color) void;
 pub extern fn DrawTriangleLines(v1: Vector2, v2: Vector2, v3: Vector2, color: Color) void;
 
 // Basic shapes collision detection functions
