@@ -8,6 +8,9 @@ const examples = .{
         "input_mouse",
         "input_mouse_wheel",
     },
+    .shapes = .{
+        "basic_shapes",
+    },
 };
 
 var lib: ?*std.Build.CompileStep = null;
