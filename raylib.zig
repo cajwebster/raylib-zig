@@ -147,6 +147,7 @@ pub extern fn DrawPolyLinesEx(center: Vector2, sides: c_int, radius: f32, rotati
 // Texture drawing functions
 
 // Color/pixel related functions
+pub extern fn Fade(color: Color, alpha: f32) Color;
 
 // Font loading/unloading functions
 
@@ -161,6 +162,7 @@ pub extern fn DrawText(text: [*:0]const u8, posX: c_int, posY: c_int, fontSize: 
 // Text strings management functions (no UTF-8 strings, only byte chars)
 // NOTE: Some strings allocate memory internally for returned strings, just be careful!
 pub extern fn TextFormat(text: [*:0]const u8, ...) [*:0]const u8;
+pub extern fn TextSubtext(text: [*:0]const u8, position: c_int, length: c_int) [*:0]const u8;
 
 // Structs
 

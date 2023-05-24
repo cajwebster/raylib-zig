@@ -11,6 +11,7 @@ const examples = .{
     .shapes = .{
         "basic_shapes",
         "logo_raylib",
+        "logo_raylib_anim",
     },
 };
 
