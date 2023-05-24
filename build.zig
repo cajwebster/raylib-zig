@@ -1,5 +1,5 @@
 const std = @import("std");
-const raylib = @import("raylib/src/build.zig");
+const raylib_upstream = @import("raylib_upstream");
 
 const examples = .{
     .core = .{
@@ -19,7 +19,7 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
     const target = b.standardTargetOptions(.{});
 
-    lib = raylib.addRaylib(b, target, optimize);
+    lib = b.dependency("raylib_upstream", .{}).artifact("raylib");
 
     const module = b.addModule("raylib", .{ .source_file = .{ .path = "raylib.zig" } });
 
