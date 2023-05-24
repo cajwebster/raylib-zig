@@ -10,6 +10,7 @@ const examples = .{
     },
     .shapes = .{
         "basic_shapes",
+        "logo_raylib",
     },
 };
 
