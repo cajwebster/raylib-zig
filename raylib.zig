@@ -55,6 +55,10 @@ pub extern fn DisableEventWaiting() void;
 pub extern fn ClearBackground(color: Color) void;
 pub extern fn BeginDrawing() void;
 pub extern fn EndDrawing() void;
+pub extern fn BeginMode2D(camera: Camera2D) void;
+pub extern fn EndMode2D() void;
+pub extern fn BeginTextureMode(target: RenderTexture2D) void;
+pub extern fn EndTextureMode() void;
 
 // VR stereo config functions for VR simulator
 
@@ -65,6 +69,9 @@ pub extern fn EndDrawing() void;
 
 // Timing-related functions
 pub extern fn SetTargetFPS(fps: c_int) void;
+pub extern fn GetFPS() c_int;
+pub extern fn GetFrameTime() f32;
+pub extern fn GetTime() f64;
 
 // Misc. functions
 
@@ -118,6 +125,7 @@ pub extern fn DrawCircleGradient(centerX: c_int, centerY: c_int, radius: f32, co
 pub extern fn DrawCircleV(center: Vector2, radius: f32, color: Color) void;
 pub extern fn DrawCircleLines(centerX: c_int, centerY: c_int, radius: f32, color: Color) void;
 pub extern fn DrawRectangle(posX: c_int, posY: c_int, width: c_int, height: c_int, color: Color) void;
+pub extern fn DrawRectanglePro(rec: Rectangle, origin: Vector2, rotation: f32, color: Color) void;
 pub extern fn DrawRectangleGradientV(posX: c_int, posY: c_int, width: c_int, height: c_int, color1: Color, color2: Color) void;
 pub extern fn DrawRectangleGradientH(posX: c_int, posY: c_int, width: c_int, height: c_int, color1: Color, color2: Color) void;
 pub extern fn DrawRectangleLines(posX: c_int, posY: c_int, width: c_int, height: c_int, color: Color) void;
@@ -141,10 +149,12 @@ pub extern fn DrawPolyLinesEx(center: Vector2, sides: c_int, radius: f32, rotati
 
 // Texture loading functions
 // NOTE: These functions require GPU access
+pub extern fn LoadRenderTexture(width: c_int, height: c_int) RenderTexture2D;
 
 // Texture configuration functions
 
 // Texture drawing functions
+pub extern fn DrawTexturePro(texture: Texture2D, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: f32, tint: Color) void;
 
 // Color/pixel related functions
 pub extern fn Fade(color: Color, alpha: f32) Color;
@@ -237,6 +247,12 @@ pub const Color = extern struct {
     b: u8,
     a: u8,
 };
+pub const Rectangle = extern struct {
+    x: f32,
+    y: f32,
+    width: f32,
+    height: f32,
+};
 
 pub const Image = extern struct {
     data: ?*anyopaque,
@@ -244,6 +260,27 @@ pub const Image = extern struct {
     height: c_int,
     mipmaps: c_int,
     format: c_int,
+};
+pub const Texture = extern struct {
+    id: c_uint,
+    width: c_int,
+    height: c_int,
+    mipmaps: c_int,
+    format: c_int,
+};
+pub const Texture2D = Texture;
+pub const RenderTexture = extern struct {
+    id: c_uint,
+    texture: Texture,
+    depth: Texture,
+};
+pub const RenderTexture2D = RenderTexture;
+
+pub const Camera2D = extern struct {
+    offset: Vector2,
+    target: Vector2,
+    rotation: f32,
+    zoom: f32,
 };
 
 // Custom raylib color palette for amazing visuals on WHITE background
