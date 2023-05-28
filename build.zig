@@ -7,6 +7,7 @@ const examples = .{
         "input_keys",
         "input_mouse",
         "input_mouse_wheel",
+        "input_multitouch",
         "smooth_pixel_perfect",
     },
     .shapes = .{

@@ -110,6 +110,11 @@ pub extern fn GetMouseWheelMoveV() Vector2;
 pub extern fn SetMouseCursor(cursor: c_int) void;
 
 // Input-related functions: touch
+pub extern fn GetTouchX() c_int;
+pub extern fn GetTouchY() c_int;
+pub extern fn GetTouchPosition(index: c_int) Vector2;
+pub extern fn GetTouchPointId(index: c_int) c_int;
+pub extern fn GetTouchPointCount() c_int;
 
 // Gestures and Touch Handling Functions
 
