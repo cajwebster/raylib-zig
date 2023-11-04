@@ -234,23 +234,23 @@ fn VectorMath(comptime Self: type) type {
     };
 }
 pub const Vector2 = extern struct {
-    x: f32,
-    y: f32,
+    x: f32 = 0,
+    y: f32 = 0,
 
     pub usingnamespace VectorMath(Vector2);
 };
 pub const Vector3 = extern struct {
-    x: f32,
-    y: f32,
-    z: f32,
+    x: f32 = 0,
+    y: f32 = 0,
+    z: f32 = 0,
 
     pub usingnamespace VectorMath(Vector3);
 };
 pub const Color = extern struct {
-    r: u8,
-    g: u8,
-    b: u8,
-    a: u8,
+    r: u8 = 0,
+    g: u8 = 0,
+    b: u8 = 0,
+    a: u8 = 255,
 };
 pub const Rectangle = extern struct {
     x: f32,
