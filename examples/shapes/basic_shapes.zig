@@ -29,22 +29,22 @@ pub fn main() !void {
             rl.DrawRectangleLines(screen_width / 4 * 2 - 40, 320, 80, 60, rl.ORANGE);
 
             rl.DrawTriangle(
-                .{ .x = @intToFloat(f32, screen_width) / 4 * 3, .y = 80 },
-                .{ .x = @intToFloat(f32, screen_width) / 4 * 3 - 60, .y = 150 },
-                .{ .x = @intToFloat(f32, screen_width) / 4 * 3 + 60, .y = 150 },
+                .{ .x = @as(f32, @floatFromInt(screen_width)) / 4 * 3, .y = 80 },
+                .{ .x = @as(f32, @floatFromInt(screen_width)) / 4 * 3 - 60, .y = 150 },
+                .{ .x = @as(f32, @floatFromInt(screen_width)) / 4 * 3 + 60, .y = 150 },
                 rl.VIOLET,
             );
 
             rl.DrawTriangleLines(
-                .{ .x = @intToFloat(f32, screen_width) / 4 * 3, .y = 160 },
-                .{ .x = @intToFloat(f32, screen_width) / 4 * 3 - 20, .y = 230 },
-                .{ .x = @intToFloat(f32, screen_width) / 4 * 3 + 20, .y = 230 },
+                .{ .x = @as(f32, @floatFromInt(screen_width)) / 4 * 3, .y = 160 },
+                .{ .x = @as(f32, @floatFromInt(screen_width)) / 4 * 3 - 20, .y = 230 },
+                .{ .x = @as(f32, @floatFromInt(screen_width)) / 4 * 3 + 20, .y = 230 },
                 rl.VIOLET,
             );
 
-            rl.DrawPoly(.{ .x = @intToFloat(f32, screen_width) / 4 * 3, .y = 330 }, 6, 80, rotation, rl.BROWN);
-            rl.DrawPolyLines(.{ .x = @intToFloat(f32, screen_width) / 4 * 3, .y = 330 }, 6, 90, rotation, rl.BROWN);
-            rl.DrawPolyLinesEx(.{ .x = @intToFloat(f32, screen_width) / 4 * 3, .y = 330 }, 6, 85, rotation, 6, rl.BEIGE);
+            rl.DrawPoly(.{ .x = @as(f32, @floatFromInt(screen_width)) / 4 * 3, .y = 330 }, 6, 80, rotation, rl.BROWN);
+            rl.DrawPolyLines(.{ .x = @as(f32, @floatFromInt(screen_width)) / 4 * 3, .y = 330 }, 6, 90, rotation, rl.BROWN);
+            rl.DrawPolyLinesEx(.{ .x = @as(f32, @floatFromInt(screen_width)) / 4 * 3, .y = 330 }, 6, 85, rotation, 6, rl.BEIGE);
 
             rl.DrawLine(18, 42, screen_width - 18, 42, rl.BLACK);
         }

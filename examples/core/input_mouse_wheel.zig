@@ -13,7 +13,7 @@ pub fn main() !void {
     rl.SetTargetFPS(60);
 
     while (!rl.WindowShouldClose()) {
-        box_position_y -= @floatToInt(c_int, rl.GetMouseWheelMove() * scroll_speed);
+        box_position_y -= @as(c_int, @intFromFloat(rl.GetMouseWheelMove() * scroll_speed));
 
         rl.BeginDrawing();
         {

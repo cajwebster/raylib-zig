@@ -8,8 +8,8 @@ pub fn main() !void {
     rl.InitWindow(screen_width, screen_height, "raylib [core] example - keyboard input");
 
     var ball_position = rl.Vector2{
-        .x = @intToFloat(f32, screen_width) / 2,
-        .y = @intToFloat(f32, screen_height) / 2,
+        .x = @as(f32, @floatFromInt(screen_width)) / 2,
+        .y = @as(f32, @floatFromInt(screen_height)) / 2,
     };
 
     rl.SetTargetFPS(60);

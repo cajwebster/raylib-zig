@@ -8,7 +8,7 @@ pub fn main() !void {
     const virtual_screen_width = 160;
     const virtual_screen_height = 90;
 
-    const virtual_ratio = @intToFloat(comptime_float, screen_width) / @intToFloat(comptime_float, screen_height);
+    const virtual_ratio = @as(comptime_float, @floatFromInt(screen_width)) / @as(comptime_float, @floatFromInt(screen_height));
 
     rl.InitWindow(screen_width, screen_height, "raylib [core] example - smooth pixel-perfect camera");
 
@@ -27,8 +27,8 @@ pub fn main() !void {
     const source_rec = rl.Rectangle{
         .x = 0,
         .y = 0,
-        .width = @intToFloat(f32, target.texture.width),
-        .height = -@intToFloat(f32, target.texture.height),
+        .width = @as(f32, @floatFromInt(target.texture.width)),
+        .height = -@as(f32, @floatFromInt(target.texture.height)),
     };
     const dest_rec = rl.Rectangle{ .x = -virtual_ratio, .y = -virtual_ratio, .width = screen_width + (virtual_ratio * 2), .height = screen_height + (virtual_ratio * 2) };
 
@@ -44,8 +44,8 @@ pub fn main() !void {
     while (!rl.WindowShouldClose()) {
         rotation += 60 * rl.GetFrameTime();
 
-        camera_x = @sin(@floatCast(f32, rl.GetTime())) * 50 - 10;
-        camera_y = @cos(@floatCast(f32, rl.GetTime())) * 30;
+        camera_x = @sin(@as(f32, @floatCast(rl.GetTime()))) * 50 - 10;
+        camera_y = @cos(@as(f32, @floatCast(rl.GetTime()))) * 30;
 
         screen_space_camera.target = .{ .x = camera_x, .y = camera_y };
 

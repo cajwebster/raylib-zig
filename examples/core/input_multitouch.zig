@@ -14,9 +14,9 @@ pub fn main() !void {
     rl.SetTargetFPS(60);
 
     while (!rl.WindowShouldClose()) {
-        var t_count = @intCast(usize, @max(rl.GetTouchPointCount(), max_touch_points));
+        var t_count = @as(usize, @intCast(@max(rl.GetTouchPointCount(), max_touch_points)));
 
-        for (0..t_count) |i| touch_positions[i] = rl.GetTouchPosition(@intCast(c_int, i));
+        for (0..t_count) |i| touch_positions[i] = rl.GetTouchPosition(@as(c_int, @intCast(i)));
 
         rl.BeginDrawing();
         {
@@ -26,9 +26,9 @@ pub fn main() !void {
                 if ((touch_positions[i].x > 0) and (touch_positions[i].y > 0)) {
                     rl.DrawCircleV(touch_positions[i], 34, rl.ORANGE);
                     rl.DrawText(
-                        rl.TextFormat("%d", @intCast(c_int, i)),
-                        @floatToInt(c_int, touch_positions[i].x - 10),
-                        @floatToInt(c_int, touch_positions[i].y - 70),
+                        rl.TextFormat("%d", @as(c_int, @intCast(i))),
+                        @as(c_int, @intFromFloat(touch_positions[i].x - 10)),
+                        @as(c_int, @intFromFloat(touch_positions[i].y - 70)),
                         40,
                         rl.BLACK,
                     );
