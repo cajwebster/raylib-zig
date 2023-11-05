@@ -158,6 +158,7 @@ pub extern fn LoadRenderTexture(width: c_int, height: c_int) RenderTexture2D;
 pub extern fn UnloadRenderTexture(target: RenderTexture2D) void;
 
 // Texture configuration functions
+pub extern fn SetTextureFilter(texture: Texture2D, filter: c_int) void;
 
 // Texture drawing functions
 pub extern fn DrawTexturePro(texture: Texture2D, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: f32, tint: Color) void;
@@ -485,3 +486,10 @@ pub const MOUSE_BUTTON_SIDE: c_int = 3;
 pub const MOUSE_BUTTON_EXTRA: c_int = 4;
 pub const MOUSE_BUTTON_FORWARD: c_int = 5;
 pub const MOUSE_BUTTON_BACK: c_int = 6;
+
+pub const TEXTURE_FILTER_POINT: c_int = 0;
+pub const TEXTURE_FILTER_BILINEAR: c_int = 1;
+pub const TEXTURE_FILTER_TRILINEAR: c_int = 2;
+pub const TEXTURE_FILTER_ANISOTROPIC_4X: c_int = 3;
+pub const TEXTURE_FILTER_ANISOTROPIC_8X: c_int = 4;
+pub const TEXTURE_FILTER_ANISOTROPIC_16X: c_int = 5;
