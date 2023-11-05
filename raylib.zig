@@ -174,9 +174,26 @@ pub extern fn DrawText(text: [*:0]const u8, posX: c_int, posY: c_int, fontSize: 
 
 // Text codepoints management functions (unicode characters)
 
-// Text strings management functions (no UTF-8 strings, only byte chars)
-// NOTE: Some strings allocate memory internally for returned strings, just be careful!
-pub extern fn TextFormat(text: [*:0]const u8, ...) [*:0]const u8;
+// Text strings management functions
+pub fn TextFormat(comptime fmt: []const u8, args: anytype) [:0]const u8 {
+    const num_buffers = 4;
+    const buffer_size = 1024;
+    const S = struct {
+        var buffers: [num_buffers][buffer_size:0]u8 = .{.{0} ** buffer_size} ** num_buffers;
+        var index: usize = 0;
+    };
+
+    const current_buffer: *[buffer_size:0]u8 = &S.buffers[S.index];
+
+    const formatted_text = @import("std").fmt.bufPrintZ(current_buffer, fmt, args) catch blk: {
+        @memset(current_buffer[buffer_size - 4 ..], '.');
+        break :blk current_buffer;
+    };
+
+    S.index = (S.index + 1) % num_buffers;
+
+    return formatted_text;
+}
 pub extern fn TextSubtext(text: [*:0]const u8, position: c_int, length: c_int) [*:0]const u8;
 
 // Structs

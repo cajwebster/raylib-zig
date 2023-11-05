@@ -22,7 +22,7 @@ pub fn main() !void {
             rl.DrawRectangle(screen_width / 2 - 40, box_position_y, 80, 80, rl.MAROON);
 
             rl.DrawText("Use mouse wheel to move the cube up and down!", 10, 10, 20, rl.GRAY);
-            rl.DrawText(rl.TextFormat("Box position Y: %03i", box_position_y), 10, 40, 20, rl.LIGHTGRAY);
+            rl.DrawText(rl.TextFormat("Box position Y: {: >4}", .{box_position_y}), 10, 40, 20, rl.LIGHTGRAY);
         }
         rl.EndDrawing();
     }

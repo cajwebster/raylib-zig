@@ -26,7 +26,7 @@ pub fn main() !void {
                 if ((touch_positions[i].x > 0) and (touch_positions[i].y > 0)) {
                     rl.DrawCircleV(touch_positions[i], 34, rl.ORANGE);
                     rl.DrawText(
-                        rl.TextFormat("%d", @as(c_int, @intCast(i))),
+                        rl.TextFormat("{}", .{i}),
                         @as(c_int, @intFromFloat(touch_positions[i].x - 10)),
                         @as(c_int, @intFromFloat(touch_positions[i].y - 70)),
                         40,

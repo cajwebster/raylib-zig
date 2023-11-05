@@ -81,8 +81,8 @@ pub fn main() !void {
             }
             rl.EndMode2D();
 
-            rl.DrawText(rl.TextFormat("Screen resolution: %ix%i", @as(c_int, screen_width), @as(c_int, screen_height)), 10, 10, 20, rl.DARKBLUE);
-            rl.DrawText(rl.TextFormat("World resolution: %ix%i", @as(c_int, virtual_screen_width), @as(c_int, virtual_screen_height)), 10, 40, 20, rl.DARKGREEN);
+            rl.DrawText(rl.TextFormat("Screen resolution: {}x{}", .{ screen_width, screen_height }), 10, 10, 20, rl.DARKBLUE);
+            rl.DrawText(rl.TextFormat("World resolution: {}x{}", .{ virtual_screen_width, virtual_screen_height }), 10, 40, 20, rl.DARKGREEN);
             rl.DrawFPS(rl.GetScreenWidth() - 95, 10);
         }
         rl.EndDrawing();
