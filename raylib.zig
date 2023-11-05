@@ -155,6 +155,7 @@ pub extern fn DrawPolyLinesEx(center: Vector2, sides: c_int, radius: f32, rotati
 // Texture loading functions
 // NOTE: These functions require GPU access
 pub extern fn LoadRenderTexture(width: c_int, height: c_int) RenderTexture2D;
+pub extern fn UnloadRenderTexture(target: RenderTexture2D) void;
 
 // Texture configuration functions
 
