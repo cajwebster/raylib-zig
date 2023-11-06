@@ -180,6 +180,12 @@ pub extern fn DrawTextEx(font: Font, text: [*:0]const u8, position: Vector2, fon
 pub extern fn DrawTextPro(font: Font, text: [*:0]const u8, position: Vector2, origin: Vector2, rotation: f32, fontSize: f32, spacing: f32, tint: Color) void;
 
 // Text font info functions
+pub extern fn SetTextLineSpacing(spacing: c_int) void;
+pub extern fn MeasureText(text: [*:0]const u8, fontSize: c_int) c_int;
+pub extern fn MeasureTextEx(font: Font, text: [*:0]const u8, fontSize: f32, spacing: f32) Vector2;
+pub extern fn GetGlyphIndex(font: Font, codepoint: c_int) c_int;
+pub extern fn GetGlyphInfo(font: Font, codepoint: c_int) GlyphInfo;
+pub extern fn GetGlyphAtlasRec(font: Font, codepoint: c_int) Rectangle;
 
 // Text codepoints management functions (unicode characters)
 
