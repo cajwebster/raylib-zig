@@ -167,10 +167,17 @@ pub extern fn DrawTexturePro(texture: Texture2D, source: Rectangle, dest: Rectan
 pub extern fn Fade(color: Color, alpha: f32) Color;
 
 // Font loading/unloading functions
+pub extern fn GetFontDefault() Font;
+pub extern fn LoadFont(fileName: [*:0]const u8) Font;
+pub extern fn LoadFontEx(fileName: [*:0]const u8, fontSize: c_int, fontChars: ?[*]c_int, glyphCount: c_int) Font;
+pub extern fn UnloadFontData(chars: [*]GlyphInfo, glyphCount: c_int) void;
+pub extern fn UnloadFont(font: Font) void;
 
 // Text Drawing Functions
 pub extern fn DrawFPS(posX: c_int, posY: c_int) void;
 pub extern fn DrawText(text: [*:0]const u8, posX: c_int, posY: c_int, fontSize: c_int, color: Color) void;
+pub extern fn DrawTextEx(font: Font, text: [*:0]const u8, position: Vector2, fontSize: f32, spacing: f32, tint: Color) void;
+pub extern fn DrawTextPro(font: Font, text: [*:0]const u8, position: Vector2, origin: Vector2, rotation: f32, fontSize: f32, spacing: f32, tint: Color) void;
 
 // Text font info functions
 
@@ -299,6 +306,22 @@ pub const RenderTexture = extern struct {
     depth: Texture,
 };
 pub const RenderTexture2D = RenderTexture;
+
+pub const GlyphInfo = extern struct {
+    value: c_int,
+    offsetX: c_int,
+    offsetY: c_int,
+    advanceX: c_int,
+    image: Image,
+};
+pub const Font = extern struct {
+    baseSize: c_int,
+    glyphCount: c_int,
+    glyphPadding: c_int,
+    texture: Texture2D,
+    recs: [*c]Rectangle,
+    glyphs: [*c]GlyphInfo,
+};
 
 pub const Camera2D = extern struct {
     offset: Vector2,
