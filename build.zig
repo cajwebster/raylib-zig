@@ -23,7 +23,7 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
     const target = b.standardTargetOptions(.{});
 
-    lib = b.dependency("raylib_upstream", .{}).artifact("raylib");
+    lib = b.dependency("raylib_upstream", .{ .optimize = optimize, .target = target }).artifact("raylib");
 
     const module = b.addModule("raylib", .{ .source_file = .{ .path = "raylib.zig" } });
 
