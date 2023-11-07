@@ -144,6 +144,7 @@ pub extern fn DrawPolyLinesEx(center: Vector2, sides: c_int, radius: f32, rotati
 
 // Image loading functions
 // NOTE: These functions do not require GPU access
+pub extern fn LoadImageFromMemory(fileType: [*:0]const u8, fileData: [*]const u8, dataSize: c_int) Image;
 
 // Image generation functions
 
