@@ -154,8 +154,15 @@ pub extern fn DrawPolyLinesEx(center: Vector2, sides: c_int, radius: f32, rotati
 
 // Texture loading functions
 // NOTE: These functions require GPU access
+pub extern fn LoadTexture(fileName: [*:0]const u8) Texture2D;
+pub extern fn LoadTextureFromImage(image: Image) Texture2D;
+pub extern fn LoadImageCubemap(image: Image, layout: c_int) TextureCubemap;
 pub extern fn LoadRenderTexture(width: c_int, height: c_int) RenderTexture2D;
+pub extern fn IsTextureReady(texture: Texture2D) bool;
+pub extern fn UnloadTexture(texture: Texture2D) void;
 pub extern fn UnloadRenderTexture(target: RenderTexture2D) void;
+pub extern fn UpdateTexture(texture: Texture2D, pixels: [*]const anyopaque) void;
+pub extern fn UpdateTextureRec(texture: Texture2D, rec: Rectangle, pixels: [*]const anyopaque) void;
 
 // Texture configuration functions
 pub extern fn SetTextureFilter(texture: Texture2D, filter: c_int) void;
@@ -308,6 +315,7 @@ pub const Texture = extern struct {
     format: c_int,
 };
 pub const Texture2D = Texture;
+pub const TextureCubemap = Texture;
 pub const RenderTexture = extern struct {
     id: c_uint,
     texture: Texture,
@@ -524,3 +532,10 @@ pub const TEXTURE_FILTER_TRILINEAR: c_int = 2;
 pub const TEXTURE_FILTER_ANISOTROPIC_4X: c_int = 3;
 pub const TEXTURE_FILTER_ANISOTROPIC_8X: c_int = 4;
 pub const TEXTURE_FILTER_ANISOTROPIC_16X: c_int = 5;
+
+pub const CUBEMAP_LAYOUT_AUTO_DETECT: c_int = 0;
+pub const CUBEMAP_LAYOUT_LINE_VERTICAL: c_int = 1;
+pub const CUBEMAP_LAYOUT_LINE_HORIZONTAL: c_int = 2;
+pub const CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR: c_int = 3;
+pub const CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE: c_int = 4;
+pub const CUBEMAP_LAYOUT_PANORAMA: c_int = 5;
