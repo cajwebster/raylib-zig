@@ -178,6 +178,8 @@ pub extern fn DrawFPS(posX: c_int, posY: c_int) void;
 pub extern fn DrawText(text: [*:0]const u8, posX: c_int, posY: c_int, fontSize: c_int, color: Color) void;
 pub extern fn DrawTextEx(font: Font, text: [*:0]const u8, position: Vector2, fontSize: f32, spacing: f32, tint: Color) void;
 pub extern fn DrawTextPro(font: Font, text: [*:0]const u8, position: Vector2, origin: Vector2, rotation: f32, fontSize: f32, spacing: f32, tint: Color) void;
+pub extern fn DrawTextCodepoint(font: Font, codepoint: c_int, position: Vector2, fontSize: f32, tint: Color) void;
+pub extern fn DrawTextCodepoints(font: Font, codepoint: *const c_int, count: c_int, position: Vector2, fontSize: f32, spacing: f32, tint: Color) void;
 
 // Text font info functions
 pub extern fn SetTextLineSpacing(spacing: c_int) void;
