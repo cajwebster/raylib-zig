@@ -144,6 +144,7 @@ pub extern fn DrawPolyLinesEx(center: Vector2, sides: c_int, radius: f32, rotati
 
 // Image loading functions
 // NOTE: These functions do not require GPU access
+pub extern fn LoadImage(fileName: [*:0]const u8) Image;
 pub extern fn LoadImageFromMemory(fileType: [*:0]const u8, fileData: [*]const u8, dataSize: c_int) Image;
 pub extern fn UnloadImage(image: Image) void;
 
@@ -179,6 +180,7 @@ pub extern fn Fade(color: Color, alpha: f32) Color;
 pub extern fn GetFontDefault() Font;
 pub extern fn LoadFont(fileName: [*:0]const u8) Font;
 pub extern fn LoadFontEx(fileName: [*:0]const u8, fontSize: c_int, fontChars: ?[*]c_int, glyphCount: c_int) Font;
+pub extern fn LoadFontFromImage(image: Image, key: Color, firstChar: c_int) Font;
 pub extern fn UnloadFontData(chars: [*]GlyphInfo, glyphCount: c_int) void;
 pub extern fn UnloadFont(font: Font) void;
 
