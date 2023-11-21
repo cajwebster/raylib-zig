@@ -74,6 +74,12 @@ pub extern fn GetFrameTime() f32;
 pub extern fn GetTime() f64;
 
 // Misc. functions
+pub extern fn TakeScreenshot(filename: [*:0]const u8) void;
+pub extern fn SetConfigFlags(flags: c_uint) void;
+pub extern fn OpenURL(url: [*:0]const u8) void;
+
+pub extern fn TraceLog(logLevel: c_int, text: [*:0]const u8, ...) void;
+pub extern fn SetTraceLogLevel(logLevel: c_int) void;
 
 // Set custom callbacks
 // WARNING: Callbacks setup is intended for advance users
@@ -409,8 +415,18 @@ pub const FLAG_WINDOW_HIGHDPI: c_int = 0x00002000;
 pub const FLAG_WINDOW_MOUSE_PASSTHROUGH: c_int = 0x00004000;
 /// Set to try enabling MSAA 4X
 pub const FLAG_MSAA_4X_HINT: c_int = 0x00000020;
-
 /// Set to try enabling interlaced video format (for V3D)pub const FLAG_INTERLACED_HINT: c_int    = 0x00010000;
+pub const FLAG_INTERLACED_HINT: c_int = 65536;
+
+pub const LOG_ALL: c_int = 0;
+pub const LOG_TRACE: c_int = 1;
+pub const LOG_DEBUG: c_int = 2;
+pub const LOG_INFO: c_int = 3;
+pub const LOG_WARNING: c_int = 4;
+pub const LOG_ERROR: c_int = 5;
+pub const LOG_FATAL: c_int = 6;
+pub const LOG_NONE: c_int = 7;
+
 pub const KEY_NULL: c_int = 0;
 pub const KEY_APOSTROPHE: c_int = 39;
 pub const KEY_COMMA: c_int = 44;
